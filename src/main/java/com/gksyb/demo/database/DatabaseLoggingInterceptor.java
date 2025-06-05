@@ -2,6 +2,7 @@ package com.gksyb.demo.database;
 
 import com.easy.query.core.basic.extension.track.EntityState;
 import com.easy.query.core.basic.extension.track.EntityTrackProperty;
+import com.easy.query.core.basic.extension.track.TrackContext;
 import com.easy.query.core.basic.jdbc.executor.ExecutorContext;
 import com.easy.query.core.basic.jdbc.parameter.DefaultToSQLContext;
 import com.easy.query.core.basic.jdbc.parameter.SQLParameter;
@@ -145,7 +146,11 @@ public class DatabaseLoggingInterceptor implements DatabaseInterceptor {
 
     private static String getLogDetail(Object entity, EntityMetadata entityMetadata, QueryRuntimeContext runtimeContext) {
         EntityMetadataManager entityMetadataManager = runtimeContext.getEntityMetadataManager();
-        EntityState entityState = runtimeContext.getTrackManager().getCurrentTrackContext().getTrackEntityState(entity);
+        TrackContext currentTrackContext = runtimeContext.getTrackManager().getCurrentTrackContext();
+        if(currentTrackContext==null){
+            return getLogDetail(entity, entityMetadata);
+        }
+        EntityState entityState = currentTrackContext.getTrackEntityState(entity);
         if (entityState == null) {
             return getLogDetail(entity, entityMetadata);
         }
