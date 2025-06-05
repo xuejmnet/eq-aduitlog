@@ -30,12 +30,12 @@
         <dependency>
             <groupId>com.easy-query</groupId>
             <artifactId>sql-processor</artifactId>
-            <version>3.0.4</version>
+            <version>3.0.18</version>
         </dependency>
         <dependency>
             <groupId>com.easy-query</groupId>
             <artifactId>sql-springboot-starter</artifactId>
-            <version>3.0.4</version>
+            <version>3.0.18</version>
         </dependency>
         <dependency>
             <groupId>com.oracle.database.jdbc</groupId>

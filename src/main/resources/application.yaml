@@ -12,3 +12,4 @@ easy-query:
   #支持的数据库
   database: mysql
   nameConversion: upper_underlined
+  save-comment: true
